@@ -35,13 +35,22 @@ function shuffle(items) {
  * - a class with the value of the color
  * - a click event listener for each card to handleCardClick
  */
-
 function createCards(colors) {
   const gameBoard = document.getElementById("game");
 
-  for (let color of colors) {
+  for (let color = 0; color < colors.length; color++) {
     //code here...
+    let card = document.createElement("div");
+    card.classList.add(colors[color]);
+    card.classList.add("card");
+    card.setAttribute("id", "card " + color);
+    gameBoard.append(card);
+
+    let cardEventListen = document.getElementById("card " + color);
+    cardEventListen.addEventListener("click", handleCardClick);
+
   }
+
 }
 
 /** Flip a card face-up. */
