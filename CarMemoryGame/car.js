@@ -7,11 +7,8 @@ const COLORS = [
   "red", "blue", "green", "orange", "purple",
   "red", "blue", "green", "orange", "purple",
 ];
-
 const colors = shuffle(COLORS);
-
 createCards(colors);
-
 
 /** Shuffle array items in-place and return shuffled array. */
 
@@ -28,7 +25,8 @@ function shuffle(items) {
   };
   return items;
 };
-/* create cards an add event listener */
+
+/** create cards an add event listener */
 function createCards(colors) {
   const gameBoard = document.getElementById("game");
   //create cards with classes and ids
@@ -47,37 +45,46 @@ function createCards(colors) {
 };
 
 /* action on click */
-let clickedOn = [];//outside of function so it does not go back to an empty arr with each click
+
+let clickedOn = [];//outside of function so it does not go back to an empty arr with each click, way of counting how many clicks occur
+let countOfClicks = clickedOn.length;
+
 function handleCardClick(evt) {
   //add color to card if the number of clicks is <= 2;
-  let clickedCard = evt.target;
-  clickedOn.push(clickedCard);
+  let clickedCard = evt.target;//access div where click occurred
 
-  if(clickedOn.length <= 2){// add color to cards
-    let colorOfClicked = clickedCard.classList.item(0);//first class on all the cards is a color
-    clickedCard.style["background-color"] = colorOfClicked;
-  }else{
-    let firstCard = clickedOn[0];
-    let secondCard = clickedOn[1];
-
-    if(firstCard.style["background-color"] !== secondCard.style["background-color"]){
-      unFlipCard(clickedOn);
-    };
-    clickedOn.length = 0;
+  if(countOfClicks < 2){// add color to cards //this condition needs to be in it's own if statement without else if, etc. bc the cards need to change with a click consistently
+    clickedOn.push(clickedCard);//only put div into array if it is less than 2, if you put div in with every click the limit would be off
+    let colorOfClicked = clickedCard.classList[0];//the first class value on all the cards is a color, accessing this color
+    clickedCard.style["background-color"] = colorOfClicked;//dynamically adding the background color
   };
+
+  if (countOfClicks === 2){
+    let firstCardColor = clickedOn[0].classList[0]//access colors of both cards
+    let secondCardColor = clickedOn[1].classList[0]
+
+    if(firstCardColor !== secondCardColor){
+      //use unFlipCard here
+      unFlipCard(clickedOn)
+      clickedOn.length = 0;// put this in here? or back in other function
+    }else{
+      //use flipCard here
+      flipCard();
+      clickedOn.length = 0;// where to put this ???
+    };
+  };
+  //what if clickedOn.length >2... can this ever occur?
 };
 
 
 /** Flip a card face-up. */
-function flipCard(card) {
-  // ... you need to write this ...
+function flipCard() {
+
 }
 
 /** Flip a card face-down. */
-function unFlipCard(arrOf2cards) {
-  let timerId = setTimeout(function flipOver(){
-    arrOf2cards.forEach(card => card.style["background-color"] = "")
-  }, 1000);
+function unFlipCard() {
+  clickedOn.forEach(card => card.style["background-color"] = "pink");
 };
 
 /** Handle clicking on a card: this could be first-card or second-card. */
