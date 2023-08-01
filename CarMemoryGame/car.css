@@ -6,12 +6,13 @@ body{
 }
 #game {
   border: red 1px solid;
-  
+
 }
-.card {
+#game > div {
   border: 1px solid black;
   width: 100px;
   height: 100px;
   margin: 20px;
   display: inline-block;
+  background-color: hotpink;
 }

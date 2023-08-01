@@ -30,28 +30,46 @@ function shuffle(items) {
 }
 
 /** Create card for every color in colors (each will appear twice)
- *
  * Each div DOM element will have:
  * - a class with the value of the color
  * - a click event listener for each card to handleCardClick
  */
+
 function createCards(colors) {
   const gameBoard = document.getElementById("game");
-
-  for (let color = 0; color < colors.length; color++) {
-    //code here...
+  //create cards with classes and ids
+  for (let i = 0; i < colors.length; i++) {
     let card = document.createElement("div");
-    card.classList.add(colors[color]);
+    card.classList.add(colors[i]);
     card.classList.add("card");
-    card.setAttribute("id", "card " + color);
+    card.setAttribute("id", "card" + i);
     gameBoard.append(card);
 
-    let cardEventListen = document.getElementById("card " + color);
-    cardEventListen.addEventListener("click", handleCardClick);
+    let eventListenToCard = document.getElementById("card" + i);
+    eventListenToCard.addEventListener("click", /*(evt) => {
+      evt.target.style["background-color"] = colors[i];
+    }*/ handleCardClick);
+  };
+};
 
+function handleCardClick(evt) {
+  //add color to card
+  let clickedCard = evt.target;
+  let colorOfClicked = clickedCard.classList.item(0);//first class on all the cards is a color
+  clickedCard.style["background-color"] = colorOfClicked//
+  //change only two colors at a time
+  let countOfClicks = 0;
+  if(evt){
+    countOfClicks++;
+    if(countOfClicks === 2){
+      //stop ability to click
+      //compare cards
+    }
   }
+  //compare both cards and run flip or unflip functions depending on result
+  
+};
 
-}
 
 /** Flip a card face-up. */
 
@@ -66,7 +84,3 @@ function unFlipCard(card) {
 }
 
 /** Handle clicking on a card: this could be first-card or second-card. */
-
-function handleCardClick(evt) {
-  // ... you need to write this ...
-}
