@@ -46,6 +46,7 @@ function createCards(colors) {
 
 /** Handle clicking on a card: this could be first-card or second-card. */
 let clickedOn = [];//outside of function so it does not go back to an empty arr with each click, way of counting how many clicks occur
+let delayFlip;
 
 function handleCardClick(evt) {
   //add color to card if the number of clicks is <= 2;
@@ -63,7 +64,11 @@ function handleCardClick(evt) {
 
     if(firstCardColor !== secondCardColor){
       //use unFlipCard here../ need to delay this by 1 second so the viewer can see the color change
-      unFlipCard(clickedOn)// what is the input here?
+      delayFlip = setTimeout(unFlipCard, 1000, clickedOn);//clickedOn is passed into the unflipcard function
+      /*clear the timer but not before the unflip function has ran...
+      so need to pass in the variable to the unflip function?? how do
+      i do this? unflip needs access to this variable to create variable
+      outside of both functions??*/
     };
     clickedOn.length = 0;//clear clickedOn array so next guess can happen--> this clear should happen no matter if the cards match or not so the next match can happen between the next two cards
   };
@@ -80,6 +85,7 @@ function flipCard(card) {
 /** Flip a card face-down. */
 function unFlipCard(twoCards) {
   twoCards.forEach(card => card.style["background-color"] = "");// how to put it back to original color?? not reset it...
+  clearTimeout(delayFlip);// clear timeout here? make sure the cards change back before timer is cleared...
 };
 
 
