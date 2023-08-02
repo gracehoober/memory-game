@@ -47,20 +47,21 @@ function createCards(colors) {
 /** Handle clicking on a card: this could be first-card or second-card. */
 let clickedOn = [];//outside of function so it does not go back to an empty arr with each click, way of counting how many clicks occur
 let delayFlip;
-
 function handleCardClick(evt) {
   //add color to card if the number of clicks is <= 2;
   let clickedCard = evt.target;//access div where click occurred
 
   if(clickedOn.length < 2){// add color to cards //this condition needs to be in it's own if statement without else if, etc. bc the cards need to change with a click consistently
       //maybe use flipCard function here? so need access to the card that was clicked on
+      if(clickedOn.includes(clickedCard)){//will this work so you cant click ont the same card twice?
+        return;
+      }
       clickedOn.push(clickedCard);//only put card into array if it is less than 2, if you put div in with every click the limit would be off
       flipCard(clickedCard);
   };
-
   if (clickedOn.length === 2){
-    let firstCardColor = clickedOn[0].classList[0]//access colors of both cards
-    let secondCardColor = clickedOn[1].classList[0]
+    let firstCardColor = clickedOn[0].classList[0];//access colors of both cards
+    let secondCardColor = clickedOn[1].classList[0];
 
     if(firstCardColor !== secondCardColor){
       //use unFlipCard here../ need to delay this by 1 second so the viewer can see the color change
@@ -71,11 +72,9 @@ function handleCardClick(evt) {
       outside of both functions??*/
     }else{
       clickedOn.length = 0; //clear clickedOn if colors are the same
-    }
-  };
-  //what if clickedOn.length >2... can this ever occur?
+    };
+  };// can clickedOn ever be greater than 2?
 };
-
 
 /** Flip a card face-up. */
 function flipCard(card) {
