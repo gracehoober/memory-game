@@ -8,7 +8,6 @@ const COLORS = [
   "red", "blue", "green", "orange", "purple",
 ];
 const colors = shuffle(COLORS);
-createCards(colors);
 
 /** Shuffle array items in-place and return shuffled array. */
 
@@ -25,9 +24,13 @@ function shuffle(items) {
   };
   return items;
 };
+/** button to start game */
+let start = document.querySelector(".start");
+start.addEventListener("click", createCards, {once:true})
 
 /** create cards an add event listener */
-function createCards(colors) {
+function createCards(evt) {
+  let startGame = evt.target;
   const gameBoard = document.getElementById("game");
   //create cards with classes and ids
   for (let i = 0; i < colors.length; i++) {
