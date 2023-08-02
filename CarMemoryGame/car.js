@@ -44,8 +44,7 @@ function createCards(colors) {
   };
 };
 
-/* action on click */
-
+/** Handle clicking on a card: this could be first-card or second-card. */
 let clickedOn = [];//outside of function so it does not go back to an empty arr with each click, way of counting how many clicks occur
 let countOfClicks = clickedOn.length;
 
@@ -54,9 +53,9 @@ function handleCardClick(evt) {
   let clickedCard = evt.target;//access div where click occurred
 
   if(countOfClicks < 2){// add color to cards //this condition needs to be in it's own if statement without else if, etc. bc the cards need to change with a click consistently
-    clickedOn.push(clickedCard);//only put div into array if it is less than 2, if you put div in with every click the limit would be off
-    let colorOfClicked = clickedCard.classList[0];//the first class value on all the cards is a color, accessing this color
-    clickedCard.style["background-color"] = colorOfClicked;//dynamically adding the background color
+      //maybe use flipCard function here? so need access to the card that was clicked on
+      clickedOn.push(clickedCard);//only put card into array if it is less than 2, if you put div in with every click the limit would be off
+      flipCard(clickedCard);
   };
 
   if (countOfClicks === 2){
@@ -66,25 +65,23 @@ function handleCardClick(evt) {
     if(firstCardColor !== secondCardColor){
       //use unFlipCard here
       unFlipCard(clickedOn)
-      clickedOn.length = 0;// put this in here? or back in other function
-    }else{
-      //use flipCard here
-      flipCard();
-      clickedOn.length = 0;// where to put this ???
-    };
+      clickedOn.length = 0;//clear clickedOn array so next guess can happen
+    }
   };
+  clickedOn.length = 0;
   //what if clickedOn.length >2... can this ever occur?
 };
 
 
 /** Flip a card face-up. */
-function flipCard() {
-
-}
-
-/** Flip a card face-down. */
-function unFlipCard() {
-  clickedOn.forEach(card => card.style["background-color"] = "pink");
+function flipCard(card) {
+  let colorOfClicked = card.classList[0];//the first class value on all the cards is a color, accessing this color
+  clickedCard.style["background-color"] = colorOfClicked;//dynamically adding the background color
 };
 
-/** Handle clicking on a card: this could be first-card or second-card. */
+/** Flip a card face-down. */
+function unFlipCard(card) {
+  clickedOn.forEach(card => card.style["background-color"] = "");// how to put it back to original color?? not reset it...
+};
+
+
