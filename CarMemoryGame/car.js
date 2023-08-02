@@ -69,8 +69,9 @@ function handleCardClick(evt) {
       so need to pass in the variable to the unflip function?? how do
       i do this? unflip needs access to this variable to create variable
       outside of both functions??*/
-    };
-    clickedOn.length = 0;//clear clickedOn array so next guess can happen--> this clear should happen no matter if the cards match or not so the next match can happen between the next two cards
+    }else{
+      clickedOn.length = 0; //clear clickedOn if colors are the same
+    }
   };
   //what if clickedOn.length >2... can this ever occur?
 };
@@ -86,6 +87,7 @@ function flipCard(card) {
 function unFlipCard(twoCards) {
   twoCards.forEach(card => card.style["background-color"] = "");// how to put it back to original color?? not reset it...
   clearTimeout(delayFlip);// clear timeout here? make sure the cards change back before timer is cleared...
+  clickedOn.length = 0;//clear clickedOn array so next guess can happen--> this clear should happen no matter if the cards match or not so the next match can happen between the next two cards
 };
 
 
