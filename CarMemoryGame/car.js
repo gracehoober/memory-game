@@ -27,6 +27,7 @@ function shuffle(items) {
 /** button to start game and button to restart game*/
 let start = document.querySelector(".start");
 start.addEventListener("click", createCards, {once:true});
+start.addEventListener("click", hideStart, {once:true});
 
 // let newGame = document.querySelector(".newGame");
 // newGame.addEventListener("click", )
@@ -60,7 +61,7 @@ function handleCardClick(evt) {
       //maybe use flipCard function here? so need access to the card that was clicked on
       if(clickedOn.includes(clickedCard)){//will this work so you cant click ont the same card twice?
         return;
-      }
+      };
       clickedOn.push(clickedCard);//only put card into array if it is less than 2, if you put div in with every click the limit would be off
       flipCard(clickedCard);
   };
@@ -94,4 +95,7 @@ function unFlipCard(twoCards) {
   clickedOn.length = 0;//clear clickedOn array so next guess can happen--> this clear should happen no matter if the cards match or not so the next match can happen between the next two cards
 };
 
-
+function hideStart(start){
+  let parentOfStart = document.querySelector("body");
+  parentOfStart.remove(start);
+}
