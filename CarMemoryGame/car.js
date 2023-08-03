@@ -24,13 +24,15 @@ function shuffle(items) {
   };
   return items;
 };
-/** button to start game */
+/** button to start game and button to restart game*/
 let start = document.querySelector(".start");
-start.addEventListener("click", createCards, {once:true})
+start.addEventListener("click", createCards, {once:true});
+
+// let newGame = document.querySelector(".newGame");
+// newGame.addEventListener("click", )
 
 /** create cards an add event listener */
-function createCards(evt) {
-  let startGame = evt.target;
+function createCards() {
   const gameBoard = document.getElementById("game");
   //create cards with classes and ids
   for (let i = 0; i < colors.length; i++) {

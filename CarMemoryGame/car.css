@@ -1,18 +1,47 @@
+@font-face {
+  font-family: Spekk-Regular;
+  src: url(fonts/Spekk\ Variable/PFSpekkVAR-Regular-subset.otf);
+}
+@font-face {
+  font-family: Spekk-bold;
+  src: url(fonts/Spekk\ Variable/PFSpekkVAR-SemiBold-subset.otf);
+}
+
 body{
   width: 100vw;
   min-height: 100vh;
   margin:0;
-
+  background-image: url(images/southSeattleView.jpeg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* cursor: */
+  font-family: Spekk-Regular;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+h1{
+  font-family: Spekk-bold;
+  margin: 5% 0 2% 0;
+}
+h2{
+  margin: 0 5% 5%;
+}
+.start{
+  
 }
 #game {
   border: red 1px solid;
-
+  margin: 5% 10%;
 }
-#game > div {
+ #game>div{
   border: 1px solid black;
-  width: 100px;
-  height: 100px;
+  width: 300px;
+  height: 180px;
   margin: 20px;
+  /* background-size: 100%;
+  background-image: url(images/ZeroSRF.jpeg);
+  background-repeat: no-repeat; */
   display: inline-block;
-  background-color: hotpink;
 }
