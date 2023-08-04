@@ -40,9 +40,9 @@ h2{
   width: 300px;
   height: 180px;
   margin: 20px;
-  background-color: hotpink;
-  /* background-size: 100%;
+  /* background-color: hotpink; */
+  background-size: 100%;
   background-image: url(images/ZeroSRF.jpeg);
-  background-repeat: no-repeat; */
+  background-repeat: no-repeat;
   display: inline-block;
 }

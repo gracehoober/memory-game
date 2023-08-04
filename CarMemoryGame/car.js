@@ -7,6 +7,8 @@ const COLORS = [
   "red", "blue", "green", "orange", "purple",
   "red", "blue", "green", "orange", "purple",
 ];
+const seattleCards = {}
+
 const colors = shuffle(COLORS);
 const gameBoard = document.getElementById("game");
 /** Shuffle array items in-place and return shuffled array. */
@@ -48,6 +50,10 @@ function displayScore(){
 function scoreText(textToDiv){
   const text = document.createTextNode("Number of guesses: " + score);
   textToDiv.appendChild(text);
+};
+function updateScore(){//textNode... like change it. what is innerHTML? okay so already created a text node... now just want to replace it with new content
+  let accessScoreDiv = document.querySelector(".score");
+  accessScoreDiv.innerHTML = "Number of guesses: " + score;
 };
 
 /** create cards an add event listener */
@@ -94,7 +100,8 @@ function handleCardClick(evt) {
     }else{
       clickedOn.length = 0; //clear clickedOn if colors are the same
     };
-    score++;//increment score
+    score ++;
+    updateScore();
   };// can clickedOn ever be greater than 2?
 };
 
