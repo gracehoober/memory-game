@@ -28,7 +28,17 @@ function shuffle(items) {
 let start = document.querySelector(".start");
 start.addEventListener("click", createCards, {once:true});
 start.addEventListener("click", hideStart, {once:true});
+start.addEventListener("click", displayCount)
 
+function hideStart(){
+  start.remove();
+}
+/** Display Score */
+let score = 0;
+function displayCount(){
+  let body = document.querySelector("body");
+
+}
 // let newGame = document.querySelector(".newGame");
 // newGame.addEventListener("click", )
 
@@ -54,12 +64,10 @@ function createCards() {
 let clickedOn = [];//outside of function so it does not go back to an empty arr with each click, way of counting how many clicks occur
 let delayFlip;
 function handleCardClick(evt) {
-  //add color to card if the number of clicks is <= 2;
   let clickedCard = evt.target;//access div where click occurred
 
   if(clickedOn.length < 2){// add color to cards //this condition needs to be in it's own if statement without else if, etc. bc the cards need to change with a click consistently
-      //maybe use flipCard function here? so need access to the card that was clicked on
-      if(clickedOn.includes(clickedCard)){//will this work so you cant click ont the same card twice?
+      if(clickedOn.includes(clickedCard)){//prevent same card cliked on twice from counting as a match
         return;
       };
       clickedOn.push(clickedCard);//only put card into array if it is less than 2, if you put div in with every click the limit would be off
@@ -95,7 +103,4 @@ function unFlipCard(twoCards) {
   clickedOn.length = 0;//clear clickedOn array so next guess can happen--> this clear should happen no matter if the cards match or not so the next match can happen between the next two cards
 };
 
-function hideStart(start){
-  let parentOfStart = document.querySelector("body");
-  parentOfStart.remove(start);
-}
+
