@@ -8,7 +8,7 @@ const COLORS = [
   "red", "blue", "green", "orange", "purple",
 ];
 const colors = shuffle(COLORS);
-
+const gameBoard = document.getElementById("game");
 /** Shuffle array items in-place and return shuffled array. */
 
 function shuffle(items) {
@@ -28,23 +28,30 @@ function shuffle(items) {
 let start = document.querySelector(".start");
 start.addEventListener("click", createCards, {once:true});
 start.addEventListener("click", hideStart, {once:true});
-start.addEventListener("click", displayCount)
+start.addEventListener("click", displayScore)
 
 function hideStart(){
   start.remove();
-}
+};
+
 /** Display Score */
 let score = 0;
-function displayCount(){
+function displayScore(){
   let body = document.querySelector("body");
-
+  let scoreDiv = document.createElement("div");
+  scoreDiv.classList.add("score");
+  // add text to this div... something with innerHTML? or text then add? createTextNode? append?
+    //used https://developer.mozilla.org/en-US/docs/Web/API/Document/createTextNode example to add text to this div
+  scoreText(scoreDiv);
+  body.insertBefore(scoreDiv, gameBoard);
 }
-// let newGame = document.querySelector(".newGame");
-// newGame.addEventListener("click", )
+function scoreText(textToDiv){
+  const text = document.createTextNode("Number of guesses: " + score);
+  textToDiv.appendChild(text);
+};
 
 /** create cards an add event listener */
 function createCards() {
-  const gameBoard = document.getElementById("game");
   //create cards with classes and ids
   for (let i = 0; i < colors.length; i++) {
     let card = document.createElement("div");
@@ -87,6 +94,7 @@ function handleCardClick(evt) {
     }else{
       clickedOn.length = 0; //clear clickedOn if colors are the same
     };
+    score++;//increment score
   };// can clickedOn ever be greater than 2?
 };
 
