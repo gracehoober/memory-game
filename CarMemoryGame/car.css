@@ -14,7 +14,7 @@ body{
   background-image: url(images/southSeattleView.jpeg);
   background-size: cover;
   background-repeat: no-repeat;
-  /* cursor: */
+
   font-family: Spekk-Regular;
   display: flex;
   flex-direction: column;
