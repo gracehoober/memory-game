@@ -8,7 +8,7 @@ const FOUND_MATCH_WAIT_MSECS = 1000;
   "red", "blue", "green", "orange", "purple",
   "red", "blue", "green", "orange", "purple",
 ];*/
-let inputArr =['url(https://media.evo.co.uk/image/private/s---glmcXE9--/v1604681456/evo/2020/11/996%20Porsche%20911%20GT3.jpg)', 'url(https://10619-2.s.cdn12.com/rests/original/503_457568408.jpg)', 'url(https://res.cloudinary.com/sagacity/image/upload/c_crop,h_2955,w_2955,x_443,y_0/c_limit,dpr_auto,f_auto,fl_lossy,q_80,w_auto/13094333294_aa946ee2b3_o_qcpqn9.jpg)'];
+let inputArr =['url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Volunteer_Park_Conservatory_-_Fern_House_interior_01.jpg/220px-Volunteer_Park_Conservatory_-_Fern_House_interior_01.jpg)','url(https://images.squarespace-cdn.com/content/v1/5568b12ae4b097ba0658d15d/1508895490239-YCDLB7XYCF7KD96I3TTC/IMG_0104.JPG)','url(https://media.evo.co.uk/image/private/s---glmcXE9--/v1604681456/evo/2020/11/996%20Porsche%20911%20GT3.jpg)', 'url(https://10619-2.s.cdn12.com/rests/original/503_457568408.jpg)', 'url(https://res.cloudinary.com/sagacity/image/upload/c_crop,h_2955,w_2955,x_443,y_0/c_limit,dpr_auto,f_auto,fl_lossy,q_80,w_auto/13094333294_aa946ee2b3_o_qcpqn9.jpg)', 'url(https://hips.hearstapps.com/amv-prod-gp.s3.amazonaws.com/gearpatrol/wp-content/uploads/2020/05/14-Great-Driving-Roads-gear-patrol-lead-full.jpg)'];
 inputArr = inputArr.concat(inputArr);
 
 

@@ -20,6 +20,8 @@ body{
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+
+
 }
 h1{
   font-family: Spekk-bold;
@@ -27,9 +29,11 @@ h1{
 }
 h2{
   margin: 0 5% 5%;
+  text-shadow: 1px 1px 1px rgb(112, 146, 146);
 }
 .start{
-
+  background-color: rgb(112, 146, 146);
+  font-family: Spekk-Regular, Arial, Helvetica, sans-serif;
 }
 #game {
   margin: 5% 10%;
@@ -44,5 +48,10 @@ h2{
   background-size: 100%;
   background-image: url(images/ZeroSRF.jpeg);
   background-repeat: no-repeat;
+  background-position: center;
   display: inline-block;
+
+}
+.score{
+  font-size: 24px;
 }
